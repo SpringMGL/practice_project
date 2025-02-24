@@ -1,7 +1,6 @@
 public class App {
-    public static void main(String[] args) throws Exception {
-        LuckinCoffee luckcoffee = new LuckinCoffee();
-        luckcoffee.takeOrder("1234", "2 lattes", 20.00);
-        
+    public static void main(String[]args) {
+        PIZZASHOP pizzeria = new PIZZASHOP();
+        pizzeria.takeOrder("12345", 50.00);
+       } 
     }
-}
