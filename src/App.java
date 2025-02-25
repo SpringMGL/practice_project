@@ -1,6 +1,8 @@
-public class App {
-    public static void main(String[]args) {
-        PIZZASHOP pizzeria = new PIZZASHOP();
-        pizzeria.takeOrder("12345", 50.00);
-       } 
+class App {
+    public static void main(String[] args) {
+        Slice_o_Heaven pizzaShop = new Slice_o_Heaven();
+        System.out.println("Showing default order process with DEF values:");
+        pizzaShop.takeOrder();
+        pizzaShop.makePizza();
     }
+}
