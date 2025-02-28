@@ -98,4 +98,55 @@ public class Slice_o_Heaven {
     public void showReceipt() {
         printReceipt();
     }
+
+    public void processCardPayment(String cardNumber, String expiryDate, int cvv) {
+        int cardLength = cardNumber.length();
+        if (cardLength == 14) {
+            System.out.println("Card accepted");
+        } else {
+            System.out.println("Invalid card");
+            return;
+        }
+
+        int firstCardDigit = 0;
+        try {
+            firstCardDigit = Integer.parseInt(cardNumber.substring(0, 1));
+            System.out.println("First card digit: " + firstCardDigit);
+        } catch (NumberFormatException e) {
+            System.out.println("Error parsing first card digit: " + e.getMessage());
+        }
+
+        String blacklistedNumber = "your_blacklisted_number";
+        if (cardNumber.equals(blacklistedNumber)) {
+            System.out.println("Card is blacklisted. Please use another card");
+            return;
+        }
+
+        int lastFourDigits = 0;
+        try {
+            lastFourDigits = Integer.parseInt(cardNumber.substring(cardNumber.length() - 4));
+            System.out.println("Last four digits of card: " + lastFourDigits);
+        } catch (NumberFormatException e) {
+            System.out.println("Error parsing last four digits of card: " + e.getMessage());
+        }
+
+        String cardNumberToDisplay = cardNumber.charAt(0) +
+                cardNumber.substring(1, cardNumber.length() - 4).replaceAll(".", "*") +
+                cardNumber.substring(cardNumber.length() - 4);
+        System.out.println("Card number to display: " + cardNumberToDisplay);
+    }
+
+    public void specialOfTheDay(String pizzaOfTheDay, String sideOfTheDay, String specialPrice) {
+        StringBuilder display = new StringBuilder();
+        display.append("Pizza of the day: ").append(pizzaOfTheDay);
+        display.append("\nSide of the day: ").append(sideOfTheDay);
+        display.append("\nSpecial price: ").append(specialPrice);
+        System.out.println(display.toString());
+    }
+
+    public static void main(String[] args) {
+        Slice_o_Heaven soh = new Slice_o_Heaven();
+        soh.processCardPayment("12345678901234", "01/26", 123);
+        soh.specialOfTheDay("Margherita Pizza", "Fries", "$12");
+    }
 }
